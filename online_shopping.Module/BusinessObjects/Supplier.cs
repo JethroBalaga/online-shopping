@@ -20,11 +20,11 @@ namespace online_shopping.Module.BusinessObjects
     //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
     //[Persistent("DatabaseTableName")]
     // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
-    public class Product : XPObject
+    public class Supplier : XPObject
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
         // Use CodeRush to create XPO classes and properties with a few keystrokes.
         // https://docs.devexpress.com/CodeRushForRoslyn/118557
-        public Product(Session session)
+        public Supplier(Session session)
             : base(session)
         {
         }
@@ -34,48 +34,29 @@ namespace online_shopping.Module.BusinessObjects
             // Place your initialization code here (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112834.aspx).
         }
 
+        string supplier_Address;
+        string supplier_Id;
+        string supplier_Name;
 
-        ProductCategory products_Category;
-        string product_Quantity;
-        string product_Status;
-        string product_Name;
-        string product_Id;
+        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        public string supplier_name
+        {
+            get => supplier_Name;
+            set => SetPropertyValue(nameof(supplier_name), ref supplier_Name, value);
+        }
 
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
         public string supplier_id
         {
-            get => product_Id;
-            set => SetPropertyValue(nameof(supplier_id), ref product_Id, value);
+            get => supplier_Id;
+            set => SetPropertyValue(nameof(supplier_id), ref supplier_Id, value);
         }
 
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
-        public string product_name
+        public string supplier_address
         {
-            get => product_Name;
-            set => SetPropertyValue(nameof(product_name), ref product_Name, value);
+            get => supplier_Address;
+            set => SetPropertyValue(nameof(supplier_address), ref supplier_Address, value);
         }
-
-        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
-           
-        public string product_status
-        {
-            get => product_Status;
-            set => SetPropertyValue(nameof(product_status), ref product_Status, value);
-        }
-
-        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
-        public string product_quantity
-        {
-            get => product_Quantity;
-            set => SetPropertyValue(nameof(product_quantity), ref product_Quantity, value);
-        }
-        
-        [Association("ProductCategory-Products")]
-        public ProductCategory Products_category
-        {
-            get => products_Category;
-            set => SetPropertyValue(nameof(Products_category), ref products_Category, value);
-        }
-        
     }
 }

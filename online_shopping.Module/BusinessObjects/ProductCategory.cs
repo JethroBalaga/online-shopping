@@ -20,11 +20,11 @@ namespace online_shopping.Module.BusinessObjects
     //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
     //[Persistent("DatabaseTableName")]
     // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
-    public class product_category : XPObject
+    public class ProductCategory : XPObject
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
         // Use CodeRush to create XPO classes and properties with a few keystrokes.
         // https://docs.devexpress.com/CodeRushForRoslyn/118557
-        public product_category(Session session)
+        public ProductCategory(Session session)
             : base(session)
         {
         }
@@ -50,5 +50,16 @@ namespace online_shopping.Module.BusinessObjects
             get => category_Name;
             set => SetPropertyValue(nameof(category_name), ref category_Name, value);
         }
+
+        [Association("ProductCategory-Products")]
+        public XPCollection<Product> Products
+        {
+            get
+            {
+                return GetCollection<Product>(nameof(Products));
+            }
+        }
+        
+
     }
 }
