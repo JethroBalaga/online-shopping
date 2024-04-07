@@ -43,7 +43,7 @@ namespace online_shopping.Module.BusinessObjects
             get => category_Id;
             set => SetPropertyValue(nameof(category_id), ref category_Id, value);
         }
-        
+
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
         public string category_name
         {
@@ -59,7 +59,5 @@ namespace online_shopping.Module.BusinessObjects
                 return GetCollection<Product>(nameof(Products));
             }
         }
-        
-
     }
 }

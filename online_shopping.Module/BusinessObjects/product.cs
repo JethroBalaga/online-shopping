@@ -35,20 +35,16 @@ namespace online_shopping.Module.BusinessObjects
         }
 
 
+
+        Supplier productSupplier;
         ProductCategory products_Category;
         string product_Quantity;
         string product_Status;
         string product_Name;
-        string product_Id;
+        
 
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
-        public string supplier_id
-        {
-            get => product_Id;
-            set => SetPropertyValue(nameof(supplier_id), ref product_Id, value);
-        }
 
-        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
         public string product_name
         {
             get => product_Name;
@@ -56,7 +52,7 @@ namespace online_shopping.Module.BusinessObjects
         }
 
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
-           
+
         public string product_status
         {
             get => product_Status;
@@ -69,13 +65,24 @@ namespace online_shopping.Module.BusinessObjects
             get => product_Quantity;
             set => SetPropertyValue(nameof(product_quantity), ref product_Quantity, value);
         }
-        
+
         [Association("ProductCategory-Products")]
         public ProductCategory Products_category
         {
             get => products_Category;
             set => SetPropertyValue(nameof(Products_category), ref products_Category, value);
+
+
         }
         
+        [Association("Supplier-Products")]
+        public Supplier ProductSupplier
+        {
+            get => productSupplier;
+            set => SetPropertyValue(nameof(ProductSupplier), ref productSupplier, value);
+        }
+
     }
-}
+
+    }
+    

@@ -34,6 +34,12 @@ namespace online_shopping.Module.BusinessObjects
             // Place your initialization code here (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112834.aspx).
         }
 
+
+
+
+
+
+       
         string supplier_Address;
         string supplier_Id;
         string supplier_Name;
@@ -58,5 +64,15 @@ namespace online_shopping.Module.BusinessObjects
             get => supplier_Address;
             set => SetPropertyValue(nameof(supplier_address), ref supplier_Address, value);
         }
+
+        [Association("Supplier-Products")]
+        public XPCollection<Product> Products
+        {
+            get
+            {
+                return GetCollection<Product>(nameof(Products));
+            }
+        }
+
     }
 }
